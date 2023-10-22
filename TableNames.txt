@@ -1,0 +1,20 @@
+Table names and columns use in PropertPulse
+
+Definitions:
+Record: is just a row in a table
+Work Order: This is the submitted request from a user asking for facilities to perform maintenance or other tasks.
+Phase: A phase is a sub-record of a Work Order. these records split work requirements betweeen various trades and shops.
+
+
+This table hold the unique id of the proposed work or maintenance request and will contain
+the description from the customer placing the request.
+
+ae_p_pro_e
+proposal    varchar(15)     primary key
+description varchar(255)
+status_code varchar(20)     
+bldg        varchar(20)
+ent_date    datetime
+edit_date   datetime
+
+This table holds the status history changes to a given 
