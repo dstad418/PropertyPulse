@@ -1,20 +1,136 @@
 Table names and columns use in PropertPulse
 
+This project uses the same naming conventions as the IWMS software that Portland State University Uses for their own maintenance ticketing system.
+If implemented later, the table names and columns will be easier to port over to the actual database.
+
 Definitions:
-Record: is just a row in a table
-Work Order: This is the submitted request from a user asking for facilities to perform maintenance or other tasks.
-Phase: A phase is a sub-record of a Work Order. these records split work requirements betweeen various trades and shops.
+- Record: is just a row in a table
+- Work Order: This is the submitted request from a user asking for facilities to perform maintenance or other tasks.
+- Phase: A phase is a sub-record of a Work Order. these records split work requirements betweeen various trades and shops.
+- Work Code: is a predefined category for the type of work that is going to be performed. (in the db it is called called craft_code)
 
+---
 
-This table hold the unique id of the proposed work or maintenance request and will contain
+ae_p_pro_e
+This table holds the unique id of the proposed work or maintenance request and will contain
 the description from the customer placing the request.
 
 ae_p_pro_e
-proposal    varchar(15)     primary key
-description varchar(255)
-status_code varchar(20)     
-bldg        varchar(20)
-ent_date    datetime
-edit_date   datetime
+proposal        varchar(15)    primary key
+description     varchar(255)
+status_code     varchar(20)     
+bldg            varchar(20)
+order_type      varchar(15)
+category        varchar(15) 
+ent_date        datetime
+edit_date       datetime
 
-This table holds the status history changes to a given 
+---
+
+ae_p_sta_e
+this table stores the status change transactions for a given work order. Generally, all work orders will start at status '11-OPEN' and are considered completed
+when work orders are in status '70-WRKCOMP'. However, it is important to check if all phases are also '70-WRKCOMP'.
+
+ae_p_sta_e
+proposal        varchar(15)    primary key
+status_code     varchar(15)    primary key
+status_date     datetime       primary key
+
+---
+
+ae_p_phs_e
+This table holds phases for work orders and in general shows the same information that is found on the work order. However, this table has additional
+parameters that help specify what type of work is going to be done from a preset list.
+
+ae_p_phs_e
+proposal        varchar(15)    primary key
+sort_code       varchar(15)    primary key
+craft_code      varchar(25)    primary key
+
+---
+
+ae_p_pst_e
+this table stores the status transactions for a work order's phases. Generally, phase statuses will start in '11-OPEN' and are considered completed
+when the status changes to '70-WRKCOMP'.
+
+ae_p_sta_e
+proposal        varchar(15)    primary key
+sort_code       varchar(15)    primary key
+status_code     varchar(15)    primary key
+status_date     datetime       primary key
+
+---
+
+ae_p_pro_s
+This table stores shop employee assignments to a phase. These individuals are then responsible for working on the phase and managing the updates on the phase.
+However, phase management can also be done by their shop managers.
+
+ae_p_pro_s
+proposal        varchar(15)    primary key
+sort_code       varchar(15)    primary key
+shop_person     varchar(15)    primary key
+
+---
+
+ae_s_bld_c
+This table holds the building ids for every building on campus. they are referenced in the work order record.
+
+ae_s_bld_c
+bldg    varchar(15)     primary key
+
+ae_s_bld_c_udf
+This table references custom values for a given building id. It is separate because the actual implementation contains more values between each table.
+However, for this project only columns that are important are being copied.
+
+ae_s_bld_c_udf
+bldg        varchar(15)     primary key
+custom003   varchar(60)
+custom007   varchar(60)
+custom010   varchar(60)
+
+explanation:
+- custom003: This holds the building's acronym
+- custom007: This holds the ID of the dedicated maintenance worker (if applicable)
+- custom010: this holds who is responsible for the building maintenance 
+
+Custom010
+Operations = General Maintenace, 
+PMC = Contracted Maintenance, 
+ZONE and PARKING = Student-funded Maintenace,
+HOUSING = Housing Maintenanc
+N/A = General Maintenace (N/A are for spaces that are much broader in ownership. For example: The campus underground tunnels and loop)
+
+---
+
+ae_x_cft_e
+is a table that has a list of the work codes that describe the type of work that will be performed on a phase.
+
+ae_x_cft_e
+craft_code  varchar(25)     primary key
+description varchar(255)
+order_type  varchar(15)     primary key
+category    varchar(15)     primary key
+
+---
+
+ae_h_emp_e
+this table is a list of current employees.
+
+ae_h_emp_e
+shop_person varchar(15)     primary key
+fname       varchar(25)
+lname       varchar(25)
+
+--
+
+ae_h_sch_d
+this table holds the rows for an employees work day. each individual's schedule day is a sequence and varies based on their schedule.
+
+if an employee works 5x8hr days they will have five entries, 4x10, four entries.
+
+the day of the week starts on Sunday (1) and ends Saturday (7)
+
+ae_h_sch_d
+shop_person     varchar(25)     primary key
+seq             numeric(5)      primary key
+work_day        numeric(10)     
