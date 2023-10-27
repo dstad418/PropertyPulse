@@ -1,0 +1,22 @@
+
+.filter-box {
+    background-color: var(--menu-color);
+    font-family: var(--text-color);
+    padding: 10px;
+    padding-bottom: 20px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  
+/* Grid layout for the filter options! */
+.filter-box label {
+    grid-area: auto;
+}
+  
+.filter-options-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns, feel free to change it if it gets crowded */
+    gap: 6px; /* gaps between each option */
+    justify-items: start;
+    align-items: center;
+}

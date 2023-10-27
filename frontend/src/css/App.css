@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+}
+
+.light-theme {
+    --bg-color: white;
+    --text-color: black;
+    --menu-color: lightgray;
+}
+  
+.dark-theme {
+    --bg-color: black;
+    --menu-color: darkgray;
+    --text-color: white;
+}
