@@ -1,9 +1,7 @@
 import { FC, useState, useEffect } from 'react';
-import BuildingComponent from './BuildingComponent';
-import './../css/MainMap.css';
-import { useTheme } from '../context/ThemeContext';
-//import OptionsBox from './OptionsBox';
-//import FavoritesBox from './FavoritesBox';
+import BuildingComponent from '../utility-components/BuildingComponent';
+import '../../css/mainpage-css/MainMap.css';
+import { useTheme } from '../utility-components/ThemeContext';
 
 
 type Building = {

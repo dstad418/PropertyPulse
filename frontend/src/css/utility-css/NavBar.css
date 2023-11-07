@@ -1,0 +1,41 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: lightblue;
+    color: var(--text-color);
+    z-index: 100;
+    padding: 0 1rem;
+}
+
+.left-container,
+.right-container {
+    display: flex;
+    align-items: center;
+}
+
+.left-container .property-report,
+.left-container .calendar-icon,
+.left-container .home-icon {
+    margin-right: 20px; /* Adjust the gap between buttons */
+}
+
+
+.navbar h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 1rem;
+    top: 100%;
+    background-color: var(--bg-color);
+    border-radius: 0.5rem;
+    z-index: 200;
+    /* Add more styling for dropdown items here */
+}

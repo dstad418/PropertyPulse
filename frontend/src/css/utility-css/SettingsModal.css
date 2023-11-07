@@ -1,0 +1,57 @@
+/* SettingsModal.css */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2em;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column; 
+}
+
+.modal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; 
+}
+
+.modal-item span {
+  flex: 1; 
+  font-size: 1.25em; 
+  font-weight: bold; 
+  margin-right: 1rem; 
+}
+
+/* BUTTON STYLES */
+.modal-item button {
+  cursor: pointer;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s;
+}
+
+.modal-item button:hover {
+  background-color: #e2e2e2;
+}
+
+/* HIDES THE MODAL WHEN PRINT SCREEN IS SELECTED */
+@media print {
+.modal-overlay {
+  display: none;
+}
+}

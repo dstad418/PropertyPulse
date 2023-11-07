@@ -1,5 +1,4 @@
 // THIS IS THE GENERAL CODE TO DISPLAY A SINGLE BLOCK OF BUILDING DATA WHEN CLICKED!
-
 import { FC } from 'react';
 
 type Building = {

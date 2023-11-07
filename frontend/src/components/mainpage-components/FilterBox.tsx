@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './../css/FilterBox.css';
+import '../../css/mainpage-css/FilterBox.css'
 
 const OptionsBox: React.FC = () => {
 
