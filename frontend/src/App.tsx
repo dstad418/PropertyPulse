@@ -1,7 +1,11 @@
-
 import { FC } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import NavBar from './components/utility-components/NavBar'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
+import NavBar from './components/utility-components/NavBar';
 import HomePage from './components/webpages/HomePage';
 import CalendarPage from './components/webpages/CalendarPage';
 import PropertyReport from './components/webpages/PropertyReport';
@@ -17,7 +21,10 @@ const App: FC = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
-            <Route path="/propertyreport" element={<PropertyReport />} />
+            <Route
+              path="/propertyreport"
+              element={<PropertyReport />}
+            />
             <Route path="/calendar" element={<CalendarPage />} />
           </Routes>
         </FavoriteStarContext>
