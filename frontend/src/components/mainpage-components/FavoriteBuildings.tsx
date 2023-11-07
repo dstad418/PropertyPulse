@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../../css/mainpage-css/FavoriteBuildings.css'
-import { buildingsData } from '../property report-components/buildingData';
+import { buildingsData } from '../property-report-components/buildingData';
 import { useFavorites } from '../utility-components/FavoritesContext';
 import FavoriteStar from '../utility-components/FavoriteStar';
 

@@ -63,7 +63,7 @@ function BuildingList() {
                     {expandedBuildingId === building.id && (
                         <div className="expanded-info">
                             <div className="extra-tile green-tile">Current Active Issues Content</div>
-                            <div className="extra-tile pink-tile">All Work Issues/Donut Graph Content</div>
+                            <div className="extra-tile pink-tile">All Work Issues/Donut Graph Content</div> {/* Insert DonutChart.tsx here */}
                             <div className="extra-tile yellow-tile">Fiscal Year Issues Trends Content</div>
                         </div>
                     )}

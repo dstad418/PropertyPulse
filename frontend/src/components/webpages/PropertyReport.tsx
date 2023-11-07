@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import BuildingList from '../property report-components/BuildingList';
+import BuildingList from '../property-report-components/BuildingList';
 // Import any subcomponents you might need
 
 const PropertyReport: FC = () => {
