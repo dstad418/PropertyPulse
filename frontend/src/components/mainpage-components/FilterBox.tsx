@@ -41,38 +41,80 @@ const OptionsBox: React.FC = () => {
         'Waste Management'
     ];
 
+    /* NOTE:
+        This code was cannabalized from the old checkbox implementation, and it can be a little complicated.
 
-    const [checkboxes, setCheckboxes] = useState<boolean[]>(
-        JSON.parse(localStorage.getItem('checkboxes') as string) || Array(reportedIssueOptions.length).fill(false)
-    );
+        Selected Options: This is the array of filter options that the user selected. In the settings model, it's
+        what clear cache calls to remove all selected user options from the dropdown.
+            NOTE #2!: This is the option that I call in the SettingsModal to remove all options from local storage!
 
-    // THIS IS WHAT STORES THE CHECKBOXES IN LOCAL STORAGE.
+        The 'checkboxes' that are stored in local storage is the array of values on IF each filter option is selected.
+        
+        I like to think of it as two lists, one to determine what IS selected, and the other to keep track of anything NOT selected. 
+        That helped me grasp the abstraction a little more. 
+    */
+
+    // Initialize the variables from local storage
+    const [selectedOptions, setSelectedOptions] = useState<string[]>(() => {
+        const savedSelectedOptions = localStorage.getItem('selectedOptions');
+        return savedSelectedOptions ? JSON.parse(savedSelectedOptions) : [];
+    });
+
+    // Initialize the 'checkboxes' from local storage. See note above!
+    const [checkboxes, setCheckboxes] = useState<boolean[]>(() => {
+        const savedCheckboxes = localStorage.getItem('filters');
+        return savedCheckboxes ? JSON.parse(savedCheckboxes) : Array(reportedIssueOptions.length).fill(false);
+    });
+
+    // Effect to store the option in local storage!
     useEffect(() => {
-        localStorage.setItem('checkboxes', JSON.stringify(checkboxes));
+        localStorage.setItem('filters', JSON.stringify(checkboxes));
     }, [checkboxes]);
 
-    const toggleCheckbox = (index: number) => {
-        const newCheckboxes = [...checkboxes];
-        newCheckboxes[index] = !newCheckboxes[index];
-        setCheckboxes(newCheckboxes);
+    // Effect to update the array of filter options!
+    useEffect(() => {
+        localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
+    }, [selectedOptions]);
+
+    const handleOptionChange = (option: string, index: number) => {
+        const updatedCheckboxes = [...checkboxes];
+        updatedCheckboxes[index] = !updatedCheckboxes[index];
+        setCheckboxes(updatedCheckboxes);
+
+        if (updatedCheckboxes[index]) {
+            setSelectedOptions([...selectedOptions, option]);
+        } else {
+            setSelectedOptions(selectedOptions.filter((selected) => selected !== option));
+        }
+    };
+
+    const removeOption = (option: string) => {
+        setSelectedOptions(selectedOptions.filter((selected) => selected !== option));
+        const index = reportedIssueOptions.indexOf(option);
+        const updatedCheckboxes = [...checkboxes];
+        updatedCheckboxes[index] = false;
+        setCheckboxes(updatedCheckboxes);
     };
 
     return (
         <div className="filter-box">
-        <h2>Filter Options:</h2>
-        {/* Added this new div for the grid layout */}
-        <div className="filter-options-grid">
-            {checkboxes.map((isChecked, index) => (
-            <label key={index}>
-                <input
-                type="checkbox"
-                checked={isChecked}
-                onChange={() => toggleCheckbox(index)}
-                />
-                {reportedIssueOptions[index]}
-            </label>
-            ))}
-        </div>
+            <h2>Filter Options:</h2>
+            <select onChange={(e) => handleOptionChange(e.target.value, reportedIssueOptions.indexOf(e.target.value))}>
+                <option value="">Select an Issue...</option>
+                {reportedIssueOptions.map((option, index) => (
+                    <option key={index} value={option} disabled={checkboxes[index]}>
+                        {option}
+                    </option>
+                ))}
+            </select>
+            <div className="selected-options">
+                {selectedOptions.map((option, index) => (
+                    <div key={index} className="selected-option">
+                        {option}
+                        <button onClick={() => removeOption(option)}>X</button>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

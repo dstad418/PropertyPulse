@@ -1,7 +1,7 @@
 import React from 'react';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import ClearIcon from '@mui/icons-material/Clear'; // You can import an icon for clearing cache
+import ClearIcon from '@mui/icons-material/Clear'; // You can import an icon for clearing cache, this is just a placeholder
 import PrintIcon from '@mui/icons-material/Print'; // Import an icon for printing
 import '../../css/utility-css/SettingsModal.css';
 
@@ -23,9 +23,10 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   if (!isOpen) return null;
 
   const clearCache = () => {
-    // Clear the specific keys from local storage, both checkboxes and favorite buildings
+    // Clear the specific keys from local storage, both filters, selectedOptions from the Mainpage and favorite buildings from PropertyList
     localStorage.removeItem('favorites');
-    localStorage.removeItem('checkboxes');
+    localStorage.removeItem('selectedOptions');
+    localStorage.removeItem('filters');
     resetFavorites();
   };
 
