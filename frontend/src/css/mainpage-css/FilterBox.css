@@ -1,0 +1,39 @@
+
+/* FilterBox.css */
+
+.filter-box {
+    background-color: var(--menu-color);
+    font-family: var(--text-color);
+    padding: 10px;
+    padding-bottom: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.filter-box select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.selected-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.selected-option {
+    background-color: #eee; /* TEMP- updates as necessary */
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.selected-option button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

@@ -1,0 +1,32 @@
+:root {
+    --psu-green: rgb(109, 142, 61);
+    --psu-light-green: rgb(197,213,45);
+    --psu-deep-green: rgb(231,74,39);
+    --psu-red: rgb(109, 142, 61);
+    --psu-tan: rgb(234,212,163);
+    --psu-blue: rgb(18,139,194);
+    --psu-light-blue: rgb(167,223,250);
+    --psu-field-green: rgb(139,139,105);
+    --psu-fall-orange: rgb(225,195,19);
+    --psu-pumpkin-orange: rgb(246,139,33);
+    --psu-royal-purple: rgb(100,31,96);
+    --psu-black: rgb(5,6,8);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+}
+
+.light-theme {
+    --bg-color: white;
+    --text-color: black;
+    --menu-color: lightgray;
+}
+  
+.dark-theme {
+    --bg-color: black;
+    --menu-color: darkgray;
+    --text-color: white;
+}

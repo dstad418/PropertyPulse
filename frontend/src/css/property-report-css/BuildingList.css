@@ -1,0 +1,58 @@
+/* BuildingList.css */
+
+.building-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+  
+.building-list-item {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+  
+.building-image {
+    width: 30%;
+    height: 30%;
+    margin-right: 20px;
+    object-fit: cover;
+}
+  
+.building-info {
+    flex-grow: 1;
+}
+ 
+
+.expanded-info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 1400px;  /* Adjust as needed */
+}
+  
+.extra-tile {
+    height: 100%; /* Adjust as needed */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.green-tile {
+    background-color: lightgreen;
+}
+  
+.pink-tile {
+    background-color: lightpink;
+}
+  
+.yellow-tile {
+    background-color: lightyellow;
+}
