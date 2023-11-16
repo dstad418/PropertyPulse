@@ -18,7 +18,6 @@ const HeatMapComponent: FC<HeatMapComponentProps> = ({
 			.then(([data, svgContent]) => {
 				const campusMapElement =
 					document.getElementById('campus-map');
-
 				if (campusMapElement) {
 					campusMapElement.innerHTML = svgContent;
 
@@ -27,32 +26,13 @@ const HeatMapComponent: FC<HeatMapComponentProps> = ({
 						total_issues: +d.total_issues,
 					}));
 
-					const colorScale = d3
-						.scaleLinear<string>()
-						.domain([
-							0,
-							d3.max(
-								issuesData,
-								(d) => d.total_issues
-							) as number,
-						])
-						.range(['lightblue', 'darkred']);
-
 					issuesData.forEach((building) => {
-						console.log(
-							`Applying color to: ${building.property}`
+						const color = determineColor(
+							building.total_issues
 						);
-						const selection = d3
-							.select(`#${building.property}`)
-							.select('path');
-						console.log(
-							`Element found:`,
-							selection.node()
-						);
-						selection.style(
-							'fill',
-							colorScale(building.total_issues)
-						);
+						d3.select(`#${building.property}`)
+							.select('path')
+							.style('fill', color);
 					});
 				} else {
 					console.error('Campus map element not found');
@@ -63,7 +43,18 @@ const HeatMapComponent: FC<HeatMapComponentProps> = ({
 			});
 	}, [dataPath, svgPath]);
 
-	return <svg id="campus-map"></svg>;
+	return (
+		<div className="svg-container">
+			<svg id="campus-map"></svg>
+		</div>
+	);
 };
+
+function determineColor(issues: number): string {
+	if (issues === 0) return 'green';
+	// A darker version of yellow for readability
+	if (issues <= 5) return 'rgb(205, 173, 0)';
+	return 'red';
+}
 
 export default HeatMapComponent;
