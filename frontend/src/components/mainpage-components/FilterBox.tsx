@@ -1,10 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/mainpage-css/FilterBox.css'
 
-const OptionsBox: React.FC = () => {
+import { supabase } from '../../db/supabase';
 
-    // I asked Tyler for a comprehensive list of these, these are just placeholders! 
-    const reportedIssueOptions = [
+const OptionsBox: React.FC = () => {
+    
+    const [craftCodes, setCraftCodes] = useState<string[]>([]);
+    useEffect(() => {
+        const fetchDataFromDatabase = async () => {
+          try {
+            // call to the api to get active issue codes
+            const response = await supabase.from('openactiveissues')
+            .select('craft_code')
+            .order('craft_code', {ascending: true} );
+    
+            // extracting craft codes from the response
+          const extractedCraftCodes: string[] = response.data.map((item: { craft_code: string }) => item.craft_code);
+
+            // Update the state with the extracted craft codes
+            setCraftCodes(extractedCraftCodes);
+
+          } catch (error) {
+            setCraftCodes(['']);
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        // Call the function to fetch data when the component mounts
+        fetchDataFromDatabase();
+      }, []);
+    
+
+    /*const craftCodes = [
         'Plumbing',
         'Fire',
         'Pipes',
@@ -39,7 +66,7 @@ const OptionsBox: React.FC = () => {
         'Cooling',
         'Water Quality',
         'Waste Management'
-    ];
+    ]; */
 
     /* NOTE:
         This code was cannabalized from the old checkbox implementation, and it can be a little complicated.
@@ -63,7 +90,7 @@ const OptionsBox: React.FC = () => {
     // Initialize the 'checkboxes' from local storage. See note above!
     const [checkboxes, setCheckboxes] = useState<boolean[]>(() => {
         const savedCheckboxes = localStorage.getItem('filters');
-        return savedCheckboxes ? JSON.parse(savedCheckboxes) : Array(reportedIssueOptions.length).fill(false);
+        return savedCheckboxes ? JSON.parse(savedCheckboxes) : Array(craftCodes.length).fill(false);
     });
 
     // Effect to store the option in local storage!
@@ -90,7 +117,7 @@ const OptionsBox: React.FC = () => {
 
     const removeOption = (option: string) => {
         setSelectedOptions(selectedOptions.filter((selected) => selected !== option));
-        const index = reportedIssueOptions.indexOf(option);
+        const index = craftCodes.indexOf(option);
         const updatedCheckboxes = [...checkboxes];
         updatedCheckboxes[index] = false;
         setCheckboxes(updatedCheckboxes);
@@ -99,9 +126,9 @@ const OptionsBox: React.FC = () => {
     return (
         <div className="filter-box">
             <h2>Filter Options:</h2>
-            <select onChange={(e) => handleOptionChange(e.target.value, reportedIssueOptions.indexOf(e.target.value))}>
+            <select onChange={(e) => handleOptionChange(e.target.value, craftCodes.indexOf(e.target.value))}>
                 <option value="">Select an Issue...</option>
-                {reportedIssueOptions.map((option, index) => (
+                {craftCodes.map((option, index) => (
                     <option key={index} value={option} disabled={checkboxes[index]}>
                         {option}
                     </option>
