@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../css/mainpage-css/FilterBox.css'
-
+import '../../css/mainpage-css/FilterBox.css';
 import { supabase } from '../../db/supabase';
 
 const OptionsBox: React.FC = () => {
@@ -15,7 +14,7 @@ const OptionsBox: React.FC = () => {
             .order('craft_code', {ascending: true} );
     
             // extracting craft codes from the response
-          const extractedCraftCodes: string[] = response.data.map((item: { craft_code: string }) => item.craft_code);
+            const extractedCraftCodes: string[] = response.data.map((item: { craft_code: string }) => item.craft_code);
 
             // Update the state with the extracted craft codes
             setCraftCodes(extractedCraftCodes);
@@ -29,44 +28,6 @@ const OptionsBox: React.FC = () => {
         // Call the function to fetch data when the component mounts
         fetchDataFromDatabase();
       }, []);
-    
-
-    /*const craftCodes = [
-        'Plumbing',
-        'Fire',
-        'Pipes',
-        'Sewer',
-        'Electrical',
-        'HVAC',
-        'Roofing',
-        'Security',
-        'Flooring',
-        'Elevators',
-        'Windows/Doors',
-        'Lighting',
-        'Pest Control',
-        'Landscaping',
-        'Mold',
-        'Parking',
-        'Furniture',
-        'Network Connectivity',
-        'Appliance Malfunction',
-        'Building Exterior',
-        'Sanitation',
-        'Insulation',
-        'Soundproofing',
-        'Emergency Exits',
-        'ADA Compliance',
-        'Ventilation',
-        'Handrails',
-        'Signage',
-        'Safety Equipment',
-        'Paint/Finish',
-        'Heating',
-        'Cooling',
-        'Water Quality',
-        'Waste Management'
-    ]; */
 
     /* NOTE:
         This code was cannabalized from the old checkbox implementation, and it can be a little complicated.
@@ -116,7 +77,7 @@ const OptionsBox: React.FC = () => {
     };
 
     const removeOption = (option: string) => {
-        setSelectedOptions(selectedOptions.filter((selected) => selected !== option));
+       setSelectedOptions(selectedOptions.filter((selected) => selected !== option));
         const index = craftCodes.indexOf(option);
         const updatedCheckboxes = [...checkboxes];
         updatedCheckboxes[index] = false;
