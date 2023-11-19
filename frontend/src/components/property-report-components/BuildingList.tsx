@@ -3,6 +3,7 @@ import { buildingsData } from './buildingData';
 import '../../css/property-report-css/BuildingList.css';
 import FavoriteStar from '../utility-components/FavoriteStar';
 import { useFavorites } from '../utility-components/FavoritesContext';
+import { supabase } from '../../db/supabase';
 
 function BuildingList() {
     const [buildingDetails, setBuildingDetails] = useState({});
@@ -10,13 +11,48 @@ function BuildingList() {
     const { favorites, toggleFavorite } = useFavorites();
 
     useEffect(() => {
-        // Fetch building details
         const fetchBuildingDetails = async () => {
-            // Actual Supabase API goes here
-            const response = await fetch('api/building/details');
-            const data = await response.json();
+            // Fetching Property Menu Data
+            const response = await supabase.from('propertymenudata')
+            .select('*')
+            .order('acronym',{ascending: true} );
+
+            // Fetching the Latest Issue Type
+            const response2 = await supabase.from('latestentry')
+            .select('*')
+            .order('acronym',{ascending: true} );
+
+            const latestIssues: object[] = response2.data.map((issue: { acronym:string, issue:string, ent_date:string}) => {
+                return { 
+                    acronym: issue.acronym,
+                    issue: issue.craft_code,
+                    ent_date: issue.ent_date
+                };
+            });
+
+            // From the Response build an array of objects holding the building information
+            const extractedBuildings: object[] = response.data.map((item: { acronym:string, description:string, issues:number, status:string, mostRecent:string }) => {
+                return {
+                  acronym: item.acronym,
+                  description: item.description.split('- ')[1],
+                  issues: item.issues,
+                  status: item.status,
+                  mostRecent: (() => {
+                    const recentIssue = latestIssues.find(obj => obj.acronym === item.acronym);
+                    if (recentIssue) {
+                      return `${recentIssue.issue} ${recentIssue.ent_date}`;
+                    } else {
+                      return 'Error or no recent issues?';
+                    }
+                  })(),
+                };
+              });
+
+              console.log(extractedBuildings);
+
             // Set building details in state
-            setBuildingDetails(data);
+            setBuildingDetails(extractedBuildings);
+
         };
 
         fetchBuildingDetails();
@@ -51,9 +87,9 @@ function BuildingList() {
                         <div className="building-info">
                             <h2>{building.name}</h2>
                             {/* Uncomment out once API is in place */}
-                            <p>Status: {/*buildingDetails[building.id]?.status || 'Loading...'*/}</p>
-                            <p>Active Issues: {/*buildingDetails[building.id]?.activeIssues || 'Loading...'*/}</p>
-                            <p>Most Recent: {/*buildingDetails[building.id]?.mostRecent || 'Loading...'*/}</p>
+                            <p>Status: {buildingDetails[building.id]?.status || 'Loading...'}</p>
+                            <p>Active Issues: {buildingDetails[building.id]?.issues || 'Loading...'}</p>
+                            <p>Most Recent: {buildingDetails[building.id]?.mostRecent || 'Loading...'}</p>
                         </div>
                         <FavoriteStar
                             isFavorited={favorites[building.id]}
