@@ -94,22 +94,12 @@ const MainMap: FC = () => {
 	return (
 		<div className={`${theme}-theme`}>
 			<div id="map-container" className={`${theme}-theme`}>
-				{/* <img
-					src="./src/assets/Maps/RevisedCampusMap.svg"
-					alt="PSU Campus Map"
-				/> */}
-
 				<HeatMapComponent
-					dataPath="./src/assets/StaticData/idToCount.csv"
+					dataPath="./src/assets/static-data/idToCount.csv"
 					svgPath="./src/assets/Maps/RevisedCampusMap.svg"
 				/>
 			</div>
-			{/* <div id="map-container" className={`${theme}-theme`}>
-				<img
-					src="./src/assets/Maps/RevisedCampusMap.svg"
-					alt="PSU Campus Map"
-				/>
-			</div> */}
+
 			{/* 
         
         This should render each building area as a separate clickable element, but this needs to be done once the map is interactive! 
