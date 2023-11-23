@@ -56,13 +56,14 @@ const HeatMapComponent: FC<HeatMapComponentProps> = ({
 
 // Determine color based on number of issues
 function determineColor(issues: number): string {
-	if (issues === 0) return 'green';
+	// Grey for no issue or not in database
+	if (issues === 0) return 'rgb(204, 204, 205)';
 
-	// A darker version of yellow for readability
-	if (issues <= 5) return 'rgb(205, 173, 0)';
+	// Bright red for issues 1-5
+	if (issues <= 5) return 'rgb(238, 75, 43)';
 
-	//issues > 5
-	return 'red';
+	// Burnt Umber for issues > 5
+	return 'rgb(110, 38, 14)';
 }
 
 export default HeatMapComponent;
