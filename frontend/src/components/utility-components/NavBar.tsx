@@ -23,7 +23,7 @@ const NavBar: FC = () => {
     };
     
     const navigateToPropertyReport = () => {
-        navigate('/propertyreport'); 
+        navigate('/buildinglist'); 
     };
 
     const navigateToCalendarPage = () => {

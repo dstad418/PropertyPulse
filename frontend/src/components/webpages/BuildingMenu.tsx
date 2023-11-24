@@ -1,12 +1,11 @@
 import { FC } from 'react';
-import { useParams } from 'react-router-dom';
+import PropertyMenu from '../revised-building-menu/propertyMenu';
 // Import any subcomponents you might need
 
 const PropertyReport: FC = () => {
-    const { acronym } = useParams();
   return (
     <div>
-      <h1>{acronym}</h1>
+      <PropertyMenu />
     </div>
   );
 };

@@ -8,9 +8,10 @@ import {
 import NavBar from './components/utility-components/NavBar';
 import HomePage from './components/webpages/HomePage';
 import CalendarPage from './components/webpages/CalendarPage';
-import PropertyReport from './components/webpages/PropertyReport';
+import BuildingMenu from './components/webpages/BuildingMenu';
 import { LightDarkMode } from './components/utility-components/ThemeContext';
 import { FavoriteStarContext } from './components/utility-components/FavoritesContext';
+import PropertyReport from './components/webpages/PropertyReport';
 
 const App: FC = () => {
   return (
@@ -20,12 +21,10 @@ const App: FC = () => {
           <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-            <Route
-              path="/propertyreport"
-              element={<PropertyReport />}
-            />
+            <Route path="/buildinglist" element={<BuildingMenu />} />
             <Route path="/calendar" element={<CalendarPage />} />
+            <Route path="/property/:acronym" element={<PropertyReport />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </FavoriteStarContext>
       </LightDarkMode>
