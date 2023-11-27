@@ -140,14 +140,17 @@
                 </g>
             </g>
             <g id="GreenGood" transform="matrix(0.0536416,0,0,-0.0536416,96.8175,532.764)">
-                <rect x="2669.74" y="7120.56" width="399.087" height="399.087" style="fill:rgb(0,128,0);"/>
+                <rect x="2669.74" y="7120.56" width="399.087" height="399.087" style="fill:rgb(204, 204, 205);"/>
             </g>
             <g id="YellowWarning" transform="matrix(0.0536416,0,0,-0.0536416,96.8175,507.412)">
-                <rect x="2669.74" y="7120.56" width="399.087" height="399.087" style="fill:rgb(205,173,0);"/>
+                <rect x="2669.74" y="7120.56" width="399.087" height="399.087" style="fill:rgb(238, 75, 43);"/>
             </g>
-            <g id="YellowWarning1" serif:id="YellowWarning" transform="matrix(0.0536416,0,0,-0.0536416,96.8175,481.102)">
-                <rect x="2669.74" y="7120.56" width="399.087" height="399.087" style="fill:rgb(255,0,0);"/>
+            <g id="YellowWarning1" transform="matrix(0.0536416,0,0,-0.0536416,96.8175,481.102)">
+                <rect x="2669.74" y="7120.56" width="399.087" height="399.087" style="fill:rgb(110, 38, 14);"/>
             </g>
+            <g id="Unknown" transform="matrix(0.0536416, 0, 0, -0.0536416, 96.8175, 454.792)">
+</g>
+
         </g>
         <g transform="matrix(0.0456763,0,0,-0.0456763,62.5148,503.716)">
             <g transform="matrix(353.903,0,0,353.903,5414.48,7525)">
@@ -169,6 +172,7 @@
             </g>
             <text x="3860.63px" y="7525px" style="font-family:'Helvetica';font-size:353.903px;">5+ Issues</text>
         </g>
+
         <g id="decorativePaths" transform="matrix(0.92388,0.382683,-0.382683,0.92388,612,396)">
             <path id="path104" d="M118.5,-473.4L78.5,-435.9L30.6,-392L14.4,-376.7L-24,-340.1L-116.7,-246.5L-131.4,-231.9L-220.2,-143.7L-275.4,-80.9L-278.3,-77.6L-290,-63.2L-310.9,-33.6L-325.3,-12.1" style="fill:none;fill-rule:nonzero;stroke:rgb(225,225,225);stroke-width:10px;"/>
             <path id="path106" d="M-446.3,184.1L-437,160.3L-400.8,77L-374.5,25.8L-353.9,-11.6L-332.3,-46.2L-308.1,-80.7L-226.8,-160.1L-134.2,-252.7L-116.8,-272.2L-25.1,-365.1L9.4,-400.5L28.1,-417.3L57,-447.9" style="fill:none;fill-rule:nonzero;stroke:rgb(225,225,225);stroke-width:10px;"/>
