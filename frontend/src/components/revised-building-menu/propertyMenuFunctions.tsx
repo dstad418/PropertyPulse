@@ -33,7 +33,7 @@ const fetchMenuInfo = async (setState:Function) => {
           mostRecent: (() => {
             const recentIssue = issueResults.find(obj => obj.acronym === item.acronym);
             if (recentIssue) {
-              return `${recentIssue.issue} Entry Date: ${recentIssue.ent_date}`;
+              return `${recentIssue.issue} - ${recentIssue.ent_date.slice(0,10)}`;
             } else {
               return 'Error or no recent issues?';
             }

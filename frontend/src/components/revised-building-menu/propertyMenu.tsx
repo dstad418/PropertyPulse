@@ -21,18 +21,18 @@ function PropertyMenu() {
     },[]);
 
     return (
-        <div className="building-list justify-around  m-50 flex flex-wrap">
+        <div className="building-list flex-auto justify-evenly">
             {
-                propertyDetails.map((element) => (
-                <div className='building-card m-5 flex shadow hover:shadow-lg flex-initial p-5 rounded-lg bg-green-900 max-w-100'>
-                    <Link key={element.acronym} to={`/property/${element.acronym}`}>
-                    <div key={element.acronym} className='propertyCard'>
-                        <h1>{element.acronym}</h1>
-                        <p>{element.description}</p>
+                propertyDetails.map((element,index) => (
+                <div className=' max-w-sm mb-5 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
+                    <Link key={index} to={`/property/${element.acronym}`}>
+                    <div key={index} className='propertyCard'>
+                        <h1 className="text-5xl font-extrabold tracking-tigh text-white">{element.acronym}</h1>
+                        <p className="text-white">{element.description}</p>
                         <div className='statusSection'>
-                            <p>Status: {element.status}</p>
-                            <p>Active Issues: {element.issues}</p>
-                            <p>Latest: {element.mostRecent}</p>   
+                            <p className="text-white">Status: {element.status}</p>
+                            <p className="text-white">Active Issues: {element.issues}</p>
+                            <p className="text-white">Latest: {element.mostRecent}</p>   
                         </div>
                     </div>
                     </Link>
