@@ -1,7 +1,7 @@
 import WorkOrderTable from "../revised-property-menu/subcomponents/WorkOrderTable"
 import PropertyReportHeader from '../revised-property-menu/subcomponents/PropertyReportHeader';
 import { FC } from "react";
-import CurrentIssueBar from "../revised-property-menu/subcomponents/CurrentIssueBar";
+import IssuesBarChart from "../revised-property-menu/subcomponents/IssuesBarChart";
 // Import any subcomponents you might need
 
 const PropertyReport: FC = () => {
@@ -11,7 +11,7 @@ const PropertyReport: FC = () => {
         <div className="p-5">
             <PropertyReportHeader />
             <WorkOrderTable />
-            <CurrentIssueBar />
+            <IssuesBarChart />
         </div>
     )
 

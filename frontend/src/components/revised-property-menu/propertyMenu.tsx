@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import '../../css/property-report-css/BuildingList.css';
 import fetchMenuInfo, { Property } from './src/propertyMenuFunctions';
 import { Link } from 'react-router-dom';
-import FavoriteStar from '../utility-components/FavoriteStar';
-import { useFavorites } from '../utility-components/FavoritesContext';
+//import FavoriteStar from '../utility-components/FavoriteStar';
+//import { useFavorites } from '../utility-components/FavoritesContext';
 
 
 
@@ -12,7 +12,9 @@ import { useFavorites } from '../utility-components/FavoritesContext';
 function PropertyMenu() {
     // useState that will contain an object that has the property info..
     const [propertyDetails, setPropertyDetails] = useState<Property[]>([]);
-    const { favorites, toggleFavorite } = useFavorites();
+
+    // not implementing since I do not have time to refactor the code to make it work.
+    //const { favorites, toggleFavorite } = useFavorites();
 
     // retrieves the list of properties that will populate the menu
     useEffect(() => {
@@ -36,10 +38,6 @@ function PropertyMenu() {
                         </div>
                     </div>
                     </Link>
-                    <FavoriteStar
-                        isFavorited={favorites[index]}
-                        onToggle={() => toggleFavorite(element.acronym)}
-                    />
                 </div>
             ))}
         </div>
