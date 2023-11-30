@@ -10,7 +10,7 @@ interface FavoriteStarProps {
 
 const FavoriteStar: React.FC<FavoriteStarProps> = ({ isFavorited, onToggle }) => (
   <div className="favorite-icon" onClick={onToggle} role="button" tabIndex={0}>
-    {isFavorited ? <StarIcon style={{ color: 'yellow' }} /> : <StarBorderIcon />}
+    {isFavorited ? <StarIcon className="animate-bounce" style={{ color: 'yellow' }} /> : <StarBorderIcon />}
   </div>
 );
 
