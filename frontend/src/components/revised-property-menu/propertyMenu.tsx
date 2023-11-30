@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 //import { buildingsData } from './buildingData';
 import '../../css/property-report-css/BuildingList.css';
-import fetchMenuInfo, { Property } from './propertyMenuFunctions';
+import fetchMenuInfo, { Property } from './src/propertyMenuFunctions';
 import { Link } from 'react-router-dom';
 import FavoriteStar from '../utility-components/FavoriteStar';
 import { useFavorites } from '../utility-components/FavoritesContext';
@@ -37,7 +37,7 @@ function PropertyMenu() {
                     </div>
                     </Link>
                     <FavoriteStar
-                        isFavorited={favorites[element.acronym]}
+                        isFavorited={favorites[index]}
                         onToggle={() => toggleFavorite(element.acronym)}
                     />
                 </div>

@@ -1,4 +1,5 @@
-import { supabase} from "../../db/supabase";
+/* eslint-disable @typescript-eslint/ban-types */
+import { supabase} from "../../../db/supabase";
 
 export interface Property {
     acronym: string | null;
@@ -71,6 +72,5 @@ export const openIssuesList = async(acronym:string | undefined, setState:Functio
     
     setState(openIssues.data);
 }
-
 
 export default issueData;

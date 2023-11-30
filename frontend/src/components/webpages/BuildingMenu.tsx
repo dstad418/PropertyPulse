@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import PropertyMenu from '../revised-building-menu/propertyMenu';
+import PropertyMenu from '../revised-property-menu/propertyMenu';
 // Import any subcomponents you might need
 
-const PropertyReport: FC = () => {
+const BuildingsMenu: FC = () => {
   return (
     <div>
       <PropertyMenu />
@@ -10,4 +10,4 @@ const PropertyReport: FC = () => {
   );
 };
 
-export default PropertyReport;
+export default BuildingsMenu;

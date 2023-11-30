@@ -1,4 +1,4 @@
-import { supabase} from "../../db/supabase";
+import { supabase} from "../../../db/supabase";
 
 export interface Property {
     acronym: string | null;
@@ -33,7 +33,7 @@ const fetchMenuInfo = async (setState:Function) => {
           mostRecent: (() => {
             const recentIssue = issueResults.find(obj => obj.acronym === item.acronym);
             if (recentIssue) {
-              return `${recentIssue.issue} - ${recentIssue.ent_date.slice(0,10)}`;
+              return `${recentIssue.issue}: ${recentIssue.ent_date.slice(0,10)}`;
             } else {
               return 'Error or no recent issues?';
             }
