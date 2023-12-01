@@ -1,6 +1,12 @@
 //Travis Block
 
 //This subcomponent renders a pie chart using chart js. the data comes from the Chart Channel
+//Travis Block
+
+/*This is a default piechart with predetermined variables for use on the property report page.
+Later these can be further edited with more props to make it work with more than just the one piechart I want*/
+
+
 import { Pie } from "react-chartjs-2";
 import { borderColors, backgroundColors } from "../src/charParams";
 

@@ -5,7 +5,7 @@ import '../../css/utility-css/NavBar.css';
 import { useTheme } from './ThemeContext';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ApartmentIcon from '@mui/icons-material/Apartment';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+//import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import HomeIcon from '@mui/icons-material/Home';
 
 const NavBar: FC = () => {

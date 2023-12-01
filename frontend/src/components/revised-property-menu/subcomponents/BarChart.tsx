@@ -1,3 +1,8 @@
+// Travis Block
+
+/*his is a default barchart with predetermined variables for use on the property report page.
+Later these can be further edited with more props to make it work with more than just the one barchart I want
+*/
 import { Bar } from "react-chartjs-2";
 import {backgroundColors, borderColors} from "../src/charParams"
 import React from "react";
