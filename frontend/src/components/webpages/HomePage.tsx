@@ -5,7 +5,7 @@ import FavoriteBuildings from '../mainpage-components/FavoriteBuildings';
 
 const HomePage: FC = () => {
   return (
-    <div>
+    <div className="static">
       <MainMap />
       <FilterBox />
       <FavoriteBuildings />
