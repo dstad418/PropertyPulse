@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../css/mainpage-css/FilterBox.css';
 import { supabase } from '../../db/supabase';
 import { useSelectedIssues } from '../utility-components/SelectedIssueContext';
+import { select } from 'd3';
 
 const OptionsBox: React.FC = () => {
 	// Get the selected issues from the context
@@ -51,17 +52,6 @@ const OptionsBox: React.FC = () => {
         That helped me grasp the abstraction a little more. 
     */
 
-	// Initialize the variables from local storage
-	const [selectedOptions, setSelectedOptions] = useState<string[]>(
-		() => {
-			const savedSelectedOptions =
-				localStorage.getItem('selectedOptions');
-			return savedSelectedOptions
-				? JSON.parse(savedSelectedOptions)
-				: [];
-		}
-	);
-
 	// Initialize the 'checkboxes' from local storage. See note above!
 	const [checkboxes, setCheckboxes] = useState<boolean[]>(() => {
 		const savedCheckboxes = localStorage.getItem('filters');
@@ -79,9 +69,9 @@ const OptionsBox: React.FC = () => {
 	useEffect(() => {
 		localStorage.setItem(
 			'selectedOptions',
-			JSON.stringify(selectedOptions)
+			JSON.stringify(selectedIssues)
 		);
-	}, [selectedOptions]);
+	}, [selectedIssues]);
 
 	const handleOptionChange = (option: string) => {
 		// Updating selected issues in context
@@ -89,6 +79,12 @@ const OptionsBox: React.FC = () => {
 			? selectedIssues.filter((selected) => selected !== option)
 			: [...selectedIssues, option];
 		setSelectedIssues(updatedSelectedIssues);
+
+		// Update checkboxes state for local storage
+		const index = craftCodes.indexOf(option);
+		const updatedCheckboxes = [...checkboxes];
+		updatedCheckboxes[index] = !updatedCheckboxes[index];
+		setCheckboxes(updatedCheckboxes);
 	};
 
 	const removeOption = (option: string) => {
@@ -96,6 +92,12 @@ const OptionsBox: React.FC = () => {
 		setSelectedIssues(
 			selectedIssues.filter((selected) => selected !== option)
 		);
+
+		// Update checkboxes state for local storage
+		const index = craftCodes.indexOf(option);
+		const updatedCheckboxes = [...checkboxes];
+		updatedCheckboxes[index] = false;
+		setCheckboxes(updatedCheckboxes);
 	};
 
 	return (
