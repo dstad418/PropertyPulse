@@ -29,7 +29,7 @@ export const backgroundColors = [
     'rgba(184, 134, 11, 0.8)',
   ];
   
- export const borderColors = [
+  export const borderColors = [
     'rgba(54, 162, 235, 1)',
     'rgba(255, 206, 86, 1)',
     'rgba(255, 99, 132, 1)',
@@ -59,4 +59,3 @@ export const backgroundColors = [
     'rgba(220, 20, 60, 0.8)',
     'rgba(184, 134, 11, 0.8)',
   ];
-

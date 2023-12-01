@@ -1,8 +1,13 @@
-import WorkOrderTable from "../revised-property-menu/subcomponents/WorkOrderTable"
-import PropertyReportHeader from '../revised-property-menu/subcomponents/PropertyReportHeader';
+//Travis Block
+/*
+This is the primary component for the prooperty report. it is built up of various components that inform the user
+on a few bits of statistics to give them an overview of issues occuring in a building both visually and textually.
+*/
+
+import WorkOrderTable from "../revised-property-menu/WorkOrderTable"
+import PropertyReportHeader from '../revised-property-menu/PropertyReportHeader';
 import { FC } from "react";
-import IssuesBarChart from "../revised-property-menu/subcomponents/IssuesBarChart";
-// Import any subcomponents you might need
+import ChartChannel from "../revised-property-menu/ChartChannel";
 
 const PropertyReport: FC = () => {
 
@@ -10,8 +15,8 @@ const PropertyReport: FC = () => {
     return (
         <div className="p-5">
             <PropertyReportHeader />
+            <ChartChannel />
             <WorkOrderTable />
-            <IssuesBarChart />
         </div>
     )
 
