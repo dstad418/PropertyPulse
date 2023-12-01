@@ -18,7 +18,7 @@ const App: FC = () => {
     <Router>
       <LightDarkMode>
         <FavoriteStarContext>
-          <NavBar />
+          <NavBar/>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/buildinglist" element={<BuildingMenu />} />

@@ -1,5 +1,12 @@
+//Travis Block
+
+/*This component is 2 of 3 for the Property Report. This showcases the list of active work orders in a building.
+Active or open or unresolved are just work orderst that still need to be completed. Once they are completed, they would
+then drop out of this list.
+*/
+
 import { useEffect, useState } from "react";
-import { openIssuesList } from "../src/propertyReportFunctions";
+import { openIssuesList } from "./src/propertyReportFunctions";
 import { useParams } from "react-router-dom";
 
 interface IssueData {

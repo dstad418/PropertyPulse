@@ -1,7 +1,12 @@
+// Travis Block
+/*This component is used as part 1 of 3 of the Property Report Pages. This is exactly the same information that is found
+on in the property menu, except that it will just be one building and it is broken up into two divs. 
+*/
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Property } from "../src/propertyMenuFunctions";
-import { propertyData } from "../src/propertyReportFunctions";
+import { Property } from "./src/propertyMenuFunctions";
+import { propertyData } from "./src/propertyReportFunctions";
 
 
 const PropertyReportHeader = () => {

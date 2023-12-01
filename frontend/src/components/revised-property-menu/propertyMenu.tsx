@@ -1,3 +1,10 @@
+//Travis Block
+
+/*This component is the property menu, one of the primary pages of the application.
+Once the data is processed property information will be populated and give the user the ability to
+go to each properties dashboard for more details related to the building itself.
+*/
+
 import { useState, useEffect } from 'react';
 //import { buildingsData } from './buildingData';
 import '../../css/property-report-css/BuildingList.css';
@@ -23,12 +30,12 @@ function PropertyMenu() {
     },[]);
 
     return (
-        <div className="building-list flex-auto justify-evenly">
+        <div className="building-list flex-auto justify-evenly" key="building-list" >
             {
                 propertyDetails.map((element,index) => (
-                <div className=' max-w-sm mb-5 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
-                    <Link key={index} to={`/property/${element.acronym}`}>
-                    <div key={index} className='propertyCard'>
+                <div key={index}className='m-5 p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
+                    <Link to={`/property/${element.acronym}`}>
+                    <div className='propertyCard'>
                         <h1 className="text-5xl font-extrabold tracking-tigh text-white">{element.acronym}</h1>
                         <p className="text-white">{element.description}</p>
                         <div className='statusSection'>
