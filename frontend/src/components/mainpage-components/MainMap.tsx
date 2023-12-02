@@ -3,6 +3,7 @@ import BuildingComponent from '../utility-components/BuildingComponent';
 import '../../css/mainpage-css/MainMap.css';
 import { useTheme } from '../utility-components/ThemeContext';
 import HeatMapComponent from './HeatMapComponent';
+import RevisedCampusMap from './src/assets/Maps/RevisedCampusMap.svg';
 import React from 'react';
 
 type Building = {
@@ -95,7 +96,7 @@ const MainMap: FC = () => {
 	return (
 		<div className={`${theme}-theme`}>
 			<div id="map-container" className={`${theme}-theme`}>
-				<HeatMapComponent svgPath="./src/assets/Maps/RevisedCampusMap.svg" />
+				<HeatMapComponent svgPath={RevisedCampusMap} />
 			</div>
 
 			{/* 
