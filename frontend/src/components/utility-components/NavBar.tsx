@@ -50,7 +50,7 @@ const NavBar: FC = () => {
                     <button className="property-report" onClick={navigateToPropertyReport} aria-label="Property Report">
                         <ApartmentIcon />
                     </button>
-                    <button className="settings-icon" onClick={openSettingsModal}>
+                    <button className="settings-icon" onClick={openSettingsModal} aria-label="Settings Modal">
                         <SettingsIcon />
                     </button>
                     {showDropDown && (
